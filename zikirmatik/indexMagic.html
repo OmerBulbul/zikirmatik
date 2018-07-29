@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ZikirMatik</title>
+    <link rel="stylesheet" href="styleMagic.css">
+</head>
+
+<body>
+    <h1>ZikirMatik</h1>
+
+    <div class="container">
+        <div class="screen">
+            <p class="number" id="screen">0</p>
+            <p class="current">Current</p>
+        </div>
+    </div>
+    <button id="buttonReset">Reset</button>
+    <button id="buttonIncrement">+1</button>
+    <script>
+
+
+
+        const state = {
+            current: 0,
+        }
+
+        function deneme() {
+            if (!isNaN(localStorage.getItem("counter"))){
+                state.current = localStorage.getItem("counter");
+            } else {
+                state.current = 0;
+            }
+        }
+
+        function incrementMutation() {
+            state.current++;
+            localStorage.setItem("counter", state.current);
+            console.log(incrementMutation);
+        }
+
+        function resetMutation() {
+            state.current = 0;
+            localStorage.setItem("counter", 0);
+            console.log(incrementMutation);
+        }
+
+
+
+        function render() {
+            document.getElementById("screen").innerText = state.current;
+        }
+
+        deneme();
+        render();
+
+        document.getElementById("buttonIncrement").addEventListener(
+            "click", function () {
+                incrementMutation();
+                render();
+            }
+        )
+        document.getElementById("buttonReset").addEventListener(
+            "click", function () {
+                resetMutation();
+                render();
+            }
+        )
+    </script>
+</body>
+
+</html>
